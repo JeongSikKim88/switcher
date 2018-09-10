@@ -1,0 +1,145 @@
+#!/bin/bash
+
+###########################################################################
+##          Quenrensys, Inc. CONFIDENTIAL AND PROPRIETARY
+##        This source is the sole property of Qurensys, Inc.
+##      Reproduction or utilization of this source in whole or in part
+##    is forbidden without the written consent of Querensys, Inc.
+###########################################################################
+##                 Copyright (c) 2018 Querensys, Inc.
+##                           All Rights Reserved
+###########################################################################
+
+PROCESS_NAME="que"
+SCRIPT_NAME="switch"
+INSTALL_DIR="./bin"
+PROCESS_FULL_PATH="$INSTALL_DIR/$PROCESS_NAME"
+
+
+pid=""
+server_addr=""
+application_name=""
+streamkey=""
+
+function echo_copyright()
+{
+    echo
+    echo "==================================================================="
+    echo " SWITCH v1.0"
+    echo " Copyright (c) 2018 Querensys, Inc."
+    echo " All Rights Reserved"
+    echo "==================================================================="
+}
+ 
+getpid()
+{
+	pid=`pidof -x $PROCESS_NAME`
+}
+
+getaddr()
+{
+    echo What is server address?
+    read server_addr
+    #echo server_addr
+
+}
+
+getapplication()
+{
+    echo What is a application_name?
+    read application_name
+}
+
+getstreamkey()
+{
+    echo What is a streamkey?
+    read streamkey
+}
+
+start()
+{
+    getaddr
+    getapplication
+    getstreamkey
+	if [ "x$pid" = "x" ];
+	then
+	nohup	$PROCESS_NAME -re -i "udp://localhost:50000?fifo_size=10000000" -c:v copy -c:a aac -b:a 128k -ar 44100 -f flv rtmp://$server_addr:1935/$application_name/$streamkey > /dev/null 2>&1 &
+		echo  "start $PROCESS_NAME [OK]"
+	else
+		echo -e "\033[01malready running... pid $pid"
+		echo -e "\033[0m"
+	fi
+}
+
+stop()
+{
+	if [ "x$pid" = "x" ];
+	then
+		echo "$PROCESS_NAME is not running..."
+	else	
+		kill -15 $pid
+		echo "stop $PROCESS_NAME [OK]"
+		echo "$PROCESS_NAME process $pid killed"
+	fi
+}
+ 
+test()
+{
+ 	if [ "x$pid" = "x" ];
+        then
+                $PROCESS_FULL_PATH --grab-conf 
+                echo  "start testmode $PROCESS_NAME ..."
+        else
+                echo "already running... pid $pid"
+                #kill -15 $pid:q
+        fi
+}
+
+status()
+{
+	if [ "x$pid" = "x" ];
+	then 
+            echo -e "$PROCESS_NAME is not running" 
+	    exit 1
+	else
+	    echo -e "\033[01m$PROCESS_NAME is running...[pid $pid]"
+	    echo "=========================="
+	     cat /proc/$pid/status | grep VmPeak
+	    cat /proc/$pid/status | grep VmSize
+	    echo -e "\033[0m"
+	    exit 0
+	
+	fi
+}
+
+echo_copyright
+getpid
+
+
+
+case "$1" in
+	start)
+		start
+		;;
+	stop)
+		stop
+		;;
+	test)
+		test
+		;;
+	restart)
+		stop
+		getpid 
+		start
+		;;
+	status)
+		status
+		;; 
+	*)
+		echo " Usage: ./$SCRIPT_NAME {start|stop|restart|status|test}"
+		exit 1
+		;;
+
+esac
+
+exit 0

@@ -1,0 +1,44 @@
+ffmpeg version 3.4.2-2 Copyright (c) 2000-2018 the FFmpeg developers
+  built with gcc 7 (Ubuntu 7.3.0-16ubuntu2)
+  configuration: --prefix=/usr --extra-version=2 --toolchain=hardened --libdir=/usr/lib/x86_64-linux-gnu --incdir=/usr/include/x86_64-linux-gnu --enable-gpl --disable-stripping --enable-avresample --enable-avisynth --enable-gnutls --enable-ladspa --enable-libass --enable-libbluray --enable-libbs2b --enable-libcaca --enable-libcdio --enable-libflite --enable-libfontconfig --enable-libfreetype --enable-libfribidi --enable-libgme --enable-libgsm --enable-libmp3lame --enable-libmysofa --enable-libopenjpeg --enable-libopenmpt --enable-libopus --enable-libpulse --enable-librubberband --enable-librsvg --enable-libshine --enable-libsnappy --enable-libsoxr --enable-libspeex --enable-libssh --enable-libtheora --enable-libtwolame --enable-libvorbis --enable-libvpx --enable-libwavpack --enable-libwebp --enable-libx265 --enable-libxml2 --enable-libxvid --enable-libzmq --enable-libzvbi --enable-omx --enable-openal --enable-opengl --enable-sdl2 --enable-libdc1394 --enable-libdrm --enable-libiec61883 --enable-chromaprint --enable-frei0r --enable-libopencv --enable-libx264 --enable-shared
+  WARNING: library configuration mismatch
+  avcodec     configuration: --prefix=/usr --extra-version=2 --toolchain=hardened --libdir=/usr/lib/x86_64-linux-gnu --incdir=/usr/include/x86_64-linux-gnu --enable-gpl --disable-stripping --enable-avresample --enable-avisynth --enable-gnutls --enable-ladspa --enable-libass --enable-libbluray --enable-libbs2b --enable-libcaca --enable-libcdio --enable-libflite --enable-libfontconfig --enable-libfreetype --enable-libfribidi --enable-libgme --enable-libgsm --enable-libmp3lame --enable-libmysofa --enable-libopenjpeg --enable-libopenmpt --enable-libopus --enable-libpulse --enable-librubberband --enable-librsvg --enable-libshine --enable-libsnappy --enable-libsoxr --enable-libspeex --enable-libssh --enable-libtheora --enable-libtwolame --enable-libvorbis --enable-libvpx --enable-libwavpack --enable-libwebp --enable-libx265 --enable-libxml2 --enable-libxvid --enable-libzmq --enable-libzvbi --enable-omx --enable-openal --enable-opengl --enable-sdl2 --enable-libdc1394 --enable-libdrm --enable-libiec61883 --enable-chromaprint --enable-frei0r --enable-libopencv --enable-libx264 --enable-shared --enable-version3 --disable-doc --disable-programs --enable-libopencore_amrnb --enable-libopencore_amrwb --enable-libtesseract --enable-libvo_amrwbenc
+  libavutil      55. 78.100 / 55. 78.100
+  libavcodec     57.107.100 / 57.107.100
+  libavformat    57. 83.100 / 57. 83.100
+  libavdevice    57. 10.100 / 57. 10.100
+  libavfilter     6.107.100 /  6.107.100
+  libavresample   3.  7.  0 /  3.  7.  0
+  libswscale      4.  8.100 /  4.  8.100
+  libswresample   2.  9.100 /  2.  9.100
+  libpostproc    54.  7.100 / 54.  7.100
+Input #0, rtsp, from 'rtsp://192.168.100.41:1554/video1+audio1':
+  Metadata:
+    title           : Video+Audio Session streamed by "TRUEN"
+    comment         : Truen Streaming Media v2016.01.08
+  Duration: N/A, start: 0.000000, bitrate: N/A
+    Stream #0:0: Video: h264 (High), yuvj420p(pc, bt709, progressive), 1920x1080, 30 fps, 30 tbr, 90k tbn, 180k tbc
+    Stream #0:1: Audio: aac (LC), 44100 Hz, stereo, fltp
+    Stream #0:2: Data: none
+Stream mapping:
+  Stream #0:0 -> #0:0 (h264 (native) -> h264 (h264_nvenc))
+  Stream #0:1 -> #0:1 (aac (native) -> aac (native))
+Press [q] to stop, [?] for help
+[swscaler @ 0x55c80c7551c0] deprecated pixel format used, make sure you did set range correctly
+Output #0, mpegts, to 'udp://localhost:50000?fifo_size=10000000':
+  Metadata:
+    title           : Video+Audio Session streamed by "TRUEN"
+    comment         : Truen Streaming Media v2016.01.08
+    encoder         : Lavf57.83.100
+    Stream #0:0: Video: h264 (h264_nvenc) (Main), yuv420p, 1920x1080, q=-1--1, 2000 kb/s, 30 fps, 90k tbn, 30 tbc
+    Metadata:
+      encoder         : Lavc57.107.100 h264_nvenc
+    Side data:
+      cpb: bitrate max/min/avg: 0/0/2000000 buffer size: 4000000 vbv_delay: -1
+    Stream #0:1: Audio: aac (LC), 44100 Hz, stereo, fltp, 128 kb/s
+    Metadata:
+      encoder         : Lavc57.107.100 aac
+frame=   10 fps=0.0 q=41.0 size=     162kB time=00:00:00.54 bitrate=2442.2kbits/s speed=1.08x    frame=   55 fps= 55 q=30.0 size=     525kB time=00:00:02.00 bitrate=2143.1kbits/s speed=1.99x    frame=   70 fps= 46 q=31.0 size=     800kB time=00:00:02.51 bitrate=2601.1kbits/s speed=1.66x    frame=   85 fps= 42 q=31.0 size=     920kB time=00:00:03.02 bitrate=2488.7kbits/s speed=1.49x    frame=  100 fps= 39 q=31.0 size=    1053kB time=00:00:03.55 bitrate=2425.1kbits/s speed=1.39x    frame=  116 fps= 38 q=30.0 size=    1179kB time=00:00:04.06 bitrate=2374.4kbits/s speed=1.33x    frame=  131 fps= 37 q=39.0 size=    1398kB time=00:00:04.57 bitrate=2501.1kbits/s speed=1.28x    frame=  146 fps= 36 q=35.0 size=    1480kB time=00:00:05.11 bitrate=2372.2kbits/s speed=1.25x    frame=  162 fps= 35 q=33.0 size=    1638kB time=00:00:05.60 bitrate=2396.1kbits/s speed=1.22x    frame=  176 fps= 34 q=32.0 size=    1749kB time=00:00:06.15 bitrate=2326.3kbits/s speed= 1.2x    frame=  193 fps= 34 q=39.0 size=    1986kB time=00:00:06.64 bitrate=2448.9kbits/s speed=1.18x    frame=  208 fps= 34 q=34.0 size=    2098kB time=00:00:07.15 bitrate=2401.9kbits/s speed=1.16x    frame=  224 fps= 34 q=35.0 size=    2273kB time=00:00:07.66 bitrate=2428.4kbits/s speed=1.15x    frame=  238 fps= 33 q=31.0 size=    2369kB time=00:00:08.17 bitrate=2373.5kbits/s speed=1.14x    frame=  254 fps= 33 q=38.0 size=    2569kB time=00:00:08.68 bitrate=2422.1kbits/s speed=1.13x    frame=  268 fps= 33 q=34.0 size=    2668kB time=00:00:09.19 bitrate=2376.2kbits/s speed=1.13x    frame=  284 fps= 33 q=33.0 size=    2797kB time=00:00:09.71 bitrate=2359.9kbits/s speed=1.12x    frame=  300 fps= 33 q=33.0 size=    2925kB time=00:00:10.19 bitrate=2349.8kbits/s speed=1.11x    frame=  315 fps= 32 q=38.0 size=    3119kB time=00:00:10.70 bitrate=2385.7kbits/s speed= 1.1x    frame=  330 fps= 32 q=34.0 size=    3231kB time=00:00:11.24 bitrate=2354.6kbits/s speed= 1.1x    frame=  347 fps= 32 q=32.0 size=    3393kB time=00:00:11.77 bitrate=2360.1kbits/s speed=1.09x    frame=  362 fps= 32 q=42.0 size=    3603kB time=00:00:12.28 bitrate=2402.2kbits/s speed=1.09x    frame=  377 fps= 32 q=37.0 size=    3705kB time=00:00:12.77 bitrate=2375.8kbits/s speed=1.09x    frame=  392 fps= 32 q=37.0 size=    3826kB time=00:00:13.28 bitrate=2358.8kbits/s speed=1.08x    frame=  408 fps= 32 q=32.0 size=    3950kB time=00:00:13.79 bitrate=2345.2kbits/s speed=1.08x    frame=  423 fps= 32 q=38.0 size=    4211kB time=00:00:14.30 bitrate=2411.3kbits/s speed=1.08x    frame=  438 fps= 32 q=37.0 size=    4251kB time=00:00:14.81 bitrate=2350.2kbits/s speed=1.07x    frame=  453 fps= 32 q=33.0 size=    4412kB time=00:00:15.30 bitrate=2361.3kbits/s speed=1.07x    frame=  468 fps= 32 q=32.0 size=    4527kB time=00:00:15.81 bitrate=2344.8kbits/s speed=1.07x    frame=  483 fps= 32 q=38.0 size=    4802kB time=00:00:16.32 bitrate=2409.2kbits/s speed=1.07x    frame=  488 fps= 31 q=39.0 Lsize=    4820kB time=00:00:16.53 bitrate=2387.8kbits/s speed=1.07x    
+video:4139kB audio:262kB subtitle:0kB other streams:0kB global headers:0kB muxing overhead: 9.519220%
+[aac @ 0x55c80c06a8e0] Qavg: 656.298
+Exiting normally, received signal 15.
